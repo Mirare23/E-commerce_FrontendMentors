@@ -47,12 +47,20 @@
     </ul>
     <ul class="flex items-center gap-10">
       <li class="relative flex flex-col items-center justify-center">
-        <img
-          @click.prevent="modal = !modal"
-          src="/img/icon-cart.svg"
-          class="cursor-pointer"
-          alt=""
-        />
+        <div class="relative flex items-center justify-center size-10">
+          <img
+            @click.prevent="modal = !modal"
+            src="/img/icon-cart.svg"
+            class="cursor-pointer"
+            alt=""
+          />
+          <div
+            v-if="cart.cart.length > 0"
+            class="absolute top-0 right-0 flex items-center justify-center text-sm text-white bg-orange-500 rounded-full size-5"
+          >
+            {{ cart.cart.length }}
+          </div>
+        </div>
         <div
           v-if="modal"
           id="modal"

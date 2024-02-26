@@ -9,7 +9,7 @@
     <div
       v-if="lightbox"
       id="lightbox"
-      class="fixed z-50 grid w-1/2 grid-cols-4 -translate-x-1/2 -translate-y-1/2 gap-y-4 gap-x-4 top-1/2 left-1/2"
+      class="fixed z-50 grid w-[500px] grid-cols-4 -translate-x-1/2 gap-y-4 h-1/2 gap-x-4 top-20 left-1/2"
     >
       <img
         @click.prevent="lightbox = !lightbox"
@@ -17,16 +17,15 @@
         src="/img/icon-close.svg"
         alt=""
       />
-      <div class="relative col-span-4">
+      <div class="w-full col-span-4 h-[500px] relative">
         <img
-          class="object-cover w-full h-full rounded-lg"
+          class="object-cover w-full h-full col-span-4 rounded-lg"
           :src="`/img/image-product-` + imgSrc + `.jpg`"
           alt=""
         />
-
         <button
           @click.prevent="imgSrc == 1 ? (imgSrc = 4) : imgSrc--"
-          class="absolute p-3 -translate-y-1/2 bg-white rounded-full top-1/2 -left-5"
+          class="absolute p-3 -translate-y-1/2 bg-white rounded-full -left-5 top-1/2"
         >
           <img
             src="/img/icon-previous.svg"
@@ -36,7 +35,7 @@
         </button>
         <button
           @click.prevent="imgSrc % 4 == 0 ? (imgSrc = 1) : imgSrc++"
-          class="absolute p-3 -translate-y-1/2 bg-white rounded-full top-1/2 -right-5"
+          class="absolute p-3 -translate-y-1/2 bg-white rounded-full -right-5 top-1/2"
         >
           <img src="/img/icon-next.svg" class="object-contain size-3" alt="" />
         </button>
@@ -95,30 +94,31 @@
       <img
         @click.prevent="lightbox = !lightbox"
         class="rounded-xl h-[500px] object-cover cursor-pointer"
-        src="/img/image-product-1.jpg"
+        :src="`/img/image-product-` + imgSrc + `.jpg`"
         alt=""
       />
+
       <div class="grid grid-cols-4 gap-x-4">
         <img
-          @click.prevent="lightbox = !lightbox"
+          @click.prevent="imgSrc = 1"
           class="cursor-pointer rounded-xl"
           src="/img/image-product-1.jpg"
           alt=""
         />
         <img
-          @click.prevent="lightbox = !lightbox"
+          @click.prevent="imgSrc = 2"
           class="cursor-pointer rounded-xl"
           src="/img/image-product-2.jpg"
           alt=""
         />
         <img
-          @click.prevent="lightbox = !lightbox"
+          @click.prevent="imgSrc = 3"
           class="cursor-pointer rounded-xl"
           src="/img/image-product-3.jpg"
           alt=""
         />
         <img
-          @click.prevent="lightbox = !lightbox"
+          @click.prevent="imgSrc = 4"
           class="cursor-pointer rounded-xl"
           src="/img/image-product-4.jpg"
           alt=""
@@ -142,7 +142,7 @@
         </div>
         <span class="font-semibold text-gray-500 line-through">$250.00</span>
       </div>
-      <div class="flex items-center flex-1 gap-4 mt-10 max-lg:flex-col">
+      <div class="flex items-center gap-4 mt-10 max-lg:flex-col">
         <div
           class="flex items-center justify-between w-full px-4 py-4 bg-gray-100 rounded-xl"
         >
